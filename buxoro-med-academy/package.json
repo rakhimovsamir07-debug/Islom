@@ -1,0 +1,13 @@
+{
+  "name": "buxoro-med-academy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Buxoro Med Academy sayti",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
