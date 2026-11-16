@@ -158,60 +158,68 @@
     <p class="lead">Abituriyentlar, maktab o'quvchilari va tibbiyotga qiziquvchilar uchun kurslar</p>
 
     <div class="grid grid--3">
-      <!-- TODO: har bir kurs uchun davomiylik va narxni kiriting -->
-      <article class="course">
+      <!-- Kurslar matni, narxi va jadvali kurslar.js faylida -->
+      <article class="course" data-id="biologiya">
         <div class="course__top course__top--bio"><span aria-hidden="true">🧬</span><em>TOP</em></div>
         <div class="course__body">
-          <p class="course__cat">Abituriyent</p>
-          <h3>Biologiya</h3>
-          <ul class="course__meta"><li>Davomiyligi: <b>— oy</b></li><li>Haftada: <b>— kun</b></li></ul>
-          <div class="course__foot"><div><small>Oylik to'lov</small><b>— so'm</b></div><a href="#royxat" class="course__go" data-course="Biologiya" aria-label="Biologiya kursiga yozilish">→</a></div>
+          <p class="course__cat" data-f="cat"></p>
+          <h3 data-f="name"></h3>
+          <ul class="course__meta"><li>Davomiyligi: <b data-f="duration"></b></li><li>Haftada: <b data-f="perWeek"></b></li></ul>
+          <button type="button" class="course__more" data-open="biologiya">Batafsil ma'lumot</button>
+          <div class="course__foot"><div><small>Oylik to'lov</small><b data-f="price"></b></div><a href="#royxat" class="course__go" data-enroll="biologiya" aria-label="Kursga yozilish">→</a></div>
         </div>
       </article>
-      <article class="course">
+      <article class="course" data-id="kimyo">
         <div class="course__top course__top--chem"><span aria-hidden="true">⚗️</span><em>TOP</em></div>
         <div class="course__body">
-          <p class="course__cat">Abituriyent</p>
-          <h3>Kimyo</h3>
-          <ul class="course__meta"><li>Davomiyligi: <b>— oy</b></li><li>Haftada: <b>— kun</b></li></ul>
-          <div class="course__foot"><div><small>Oylik to'lov</small><b>— so'm</b></div><a href="#royxat" class="course__go" data-course="Kimyo" aria-label="Kimyo kursiga yozilish">→</a></div>
+          <p class="course__cat" data-f="cat"></p>
+          <h3 data-f="name"></h3>
+          <ul class="course__meta"><li>Davomiyligi: <b data-f="duration"></b></li><li>Haftada: <b data-f="perWeek"></b></li></ul>
+          <button type="button" class="course__more" data-open="kimyo">Batafsil ma'lumot</button>
+          <div class="course__foot"><div><small>Oylik to'lov</small><b data-f="price"></b></div><a href="#royxat" class="course__go" data-enroll="kimyo" aria-label="Kursga yozilish">→</a></div>
         </div>
       </article>
-      <article class="course">
+      <article class="course" data-id="majburiy">
         <div class="course__top course__top--core"><span aria-hidden="true">📚</span></div>
         <div class="course__body">
-          <p class="course__cat">Abituriyent</p>
-          <h3>Majburiy fanlar</h3>
-          <ul class="course__meta"><li>Ona tili, matematika, tarix</li><li>Haftada: <b>— kun</b></li></ul>
-          <div class="course__foot"><div><small>Oylik to'lov</small><b>— so'm</b></div><a href="#royxat" class="course__go" data-course="Majburiy fanlar" aria-label="Majburiy fanlar kursiga yozilish">→</a></div>
+          <p class="course__cat" data-f="cat"></p>
+          <h3 data-f="name"></h3>
+          <ul class="course__meta"><li>Davomiyligi: <b data-f="duration"></b></li><li>Haftada: <b data-f="perWeek"></b></li></ul>
+          <button type="button" class="course__more" data-open="majburiy">Batafsil ma'lumot</button>
+          <div class="course__foot"><div><small>Oylik to'lov</small><b data-f="price"></b></div><a href="#royxat" class="course__go" data-enroll="majburiy" aria-label="Kursga yozilish">→</a></div>
         </div>
       </article>
-      <article class="course">
+      <article class="course" data-id="hamshiralik">
         <div class="course__top course__top--nurse"><span aria-hidden="true">🩺</span></div>
         <div class="course__body">
-          <p class="course__cat">Kasb</p>
-          <h3>Hamshiralik</h3>
-          <ul class="course__meta"><li>Davomiyligi: <b>— oy</b></li><li>Amaliy mashg'ulotlar</li></ul>
-          <div class="course__foot"><div><small>Oylik to'lov</small><b>— so'm</b></div><a href="#royxat" class="course__go" data-course="Hamshiralik" aria-label="Hamshiralik kursiga yozilish">→</a></div>
+          <p class="course__cat" data-f="cat"></p>
+          <h3 data-f="name"></h3>
+          <ul class="course__meta"><li>Davomiyligi: <b data-f="duration"></b></li><li>Haftada: <b data-f="perWeek"></b></li></ul>
+          <button type="button" class="course__more" data-open="hamshiralik">Batafsil ma'lumot</button>
+          <div class="course__foot"><div><small>Oylik to'lov</small><b data-f="price"></b></div><a href="#royxat" class="course__go" data-enroll="hamshiralik" aria-label="Kursga yozilish">→</a></div>
         </div>
       </article>
-      <article class="course">
+      <article class="course" data-id="rus">
         <div class="course__top course__top--ru"><span class="course__glyph" aria-hidden="true">Яя</span></div>
         <div class="course__body">
-          <p class="course__cat">Til</p>
-          <h3>Rus tili</h3>
-          <ul class="course__meta"><li>Davomiyligi: <b>— oy</b></li><li>Haftada: <b>— kun</b></li></ul>
-          <div class="course__foot"><div><small>Oylik to'lov</small><b>— so'm</b></div><a href="#royxat" class="course__go" data-course="Rus tili" aria-label="Rus tili kursiga yozilish">→</a></div>
+          <p class="course__cat" data-f="cat"></p>
+          <h3 data-f="name"></h3>
+          <ul class="course__meta"><li>Davomiyligi: <b data-f="duration"></b></li><li>Haftada: <b data-f="perWeek"></b></li></ul>
+          <button type="button" class="course__more" data-open="rus">Batafsil ma'lumot</button>
+          <div class="course__foot"><div><small>Oylik to'lov</small><b data-f="price"></b></div><a href="#royxat" class="course__go" data-enroll="rus" aria-label="Kursga yozilish">→</a></div>
         </div>
       </article>
-      <article class="course">
+      <article class="course" data-id="ingliz">
         <div class="course__top course__top--en"><span class="course__glyph" aria-hidden="true">Aa</span></div>
         <div class="course__body">
-          <p class="course__cat">Til</p>
-          <h3>Ingliz tili</h3>
-          <ul class="course__meta"><li>Davomiyligi: <b>— oy</b></li><li>Haftada: <b>— kun</b></li></ul>
-          <div class="course__foot"><div><small>Oylik to'lov</small><b>— so'm</b></div><a href="#royxat" class="course__go" data-course="Ingliz tili" aria-label="Ingliz tili kursiga yozilish">→</a></div>
+          <p class="course__cat" data-f="cat"></p>
+          <h3 data-f="name"></h3>
+          <ul class="course__meta"><li>Davomiyligi: <b data-f="duration"></b></li><li>Haftada: <b data-f="perWeek"></b></li></ul>
+          <button type="button" class="course__more" data-open="ingliz">Batafsil ma'lumot</button>
+          <div class="course__foot"><div><small>Oylik to'lov</small><b data-f="price"></b></div><a href="#royxat" class="course__go" data-enroll="ingliz" aria-label="Kursga yozilish">→</a></div>
         </div>
+      </article>
+    </div>
       </article>
     </div>
   </div>
@@ -373,8 +381,37 @@
   <p class="container footer__copy">© <span id="year"></span> Buxoro Med Academy</p>
 </footer>
 
+
+<!-- ============ KURS HAQIDA OYNA ============ -->
+<dialog class="cmodal" id="cmodal" aria-labelledby="cm-name">
+  <div class="cmodal__head" id="cm-head">
+    <button type="button" class="cmodal__close" id="cm-close" aria-label="Yopish">✕</button>
+    <span class="cmodal__icon" id="cm-icon" aria-hidden="true"></span>
+    <p class="cmodal__cat" id="cm-cat"></p>
+    <h2 class="cmodal__name" id="cm-name"></h2>
+    <p class="cmodal__for" id="cm-for"></p>
+  </div>
+  <div class="cmodal__body">
+    <dl class="cmodal__facts">
+      <div><dt>Davomiyligi</dt><dd id="cm-duration"></dd></div>
+      <div><dt>Haftada</dt><dd id="cm-perWeek"></dd></div>
+      <div><dt>Bir dars</dt><dd id="cm-lesson"></dd></div>
+      <div><dt>Guruh</dt><dd id="cm-group"></dd></div>
+    </dl>
+    <h3>Nimalarni o'rganasiz</h3>
+    <ul class="cmodal__list" id="cm-topics"></ul>
+    <h3>Kurs davomida</h3>
+    <ul class="cmodal__list cmodal__list--check" id="cm-perks"></ul>
+    <div class="cmodal__price">
+      <div><small>Oylik to'lov</small><b id="cm-price"></b><span id="cm-note"></span></div>
+      <a href="#royxat" class="btn btn--red" id="cm-enroll">Shu kursga yozilish →</a>
+    </div>
+  </div>
+</dialog>
+
 <a href="#royxat" class="sticky-cta">Bepul konsultatsiya</a>
 
+<script src="kurslar.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

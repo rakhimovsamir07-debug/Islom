@@ -73,10 +73,87 @@ document.querySelectorAll("[data-branch]").forEach((btn) => {
 });
 showBranch(0);
 
-// ===== Kurs kartochkasidan formaga: kursni avtomatik tanlash =====
-document.querySelectorAll("[data-course]").forEach((a) =>
-  a.addEventListener("click", () => (document.getElementById("course-select").value = a.dataset.course))
-);
+// ===== Kurslar: kartochkalarni kurslar.js dagi ma'lumot bilan to'ldirish =====
+const COURSES = window.COURSES || {};
+const show = (v, fallback = "—") => (v == null || v === "" ? fallback : v);
+const PRICE_EMPTY = "Narxini so'rang";
+
+document.querySelectorAll(".course[data-id]").forEach((card) => {
+  const c = COURSES[card.dataset.id];
+  if (!c) return;
+  card.querySelector('[data-f="name"]').textContent = c.name;
+  card.querySelector('[data-f="cat"]').textContent = c.cat;
+  card.querySelector('[data-f="duration"]').textContent = show(c.duration);
+  card.querySelector('[data-f="perWeek"]').textContent = show(c.perWeek);
+  card.querySelector('[data-f="price"]').textContent = show(c.price, PRICE_EMPTY);
+  card.querySelector(".course__go").setAttribute("aria-label", `${c.name} kursiga yozilish`);
+  card.querySelector(".course__more").setAttribute("aria-label", `${c.name} kursi haqida batafsil`);
+});
+
+// Formada kursni avtomatik tanlash
+const pickCourse = (id) => {
+  const c = COURSES[id];
+  if (c) document.getElementById("course-select").value = c.name;
+};
+document.querySelectorAll("[data-enroll]").forEach((a) => a.addEventListener("click", (e) => {
+  e.stopPropagation();
+  pickCourse(a.dataset.enroll);
+}));
+
+// ===== Kurs haqida oyna =====
+const modal = document.getElementById("cmodal");
+let openedId = null, lastFocus = null;
+const fillList = (el, items) => {
+  el.replaceChildren(...(items || []).map((t) => Object.assign(document.createElement("li"), { textContent: t })));
+};
+function openCourse(id) {
+  const c = COURSES[id];
+  if (!c || !modal) return;
+  openedId = id;
+  lastFocus = document.activeElement;
+  const $ = (s) => document.getElementById(s);
+  $("cm-icon").textContent = c.icon || "";
+  $("cm-cat").textContent = c.cat;
+  $("cm-name").textContent = c.name;
+  $("cm-for").textContent = c.for || "";
+  $("cm-duration").textContent = show(c.duration);
+  $("cm-perWeek").textContent = show(c.perWeek);
+  $("cm-lesson").textContent = show(c.lesson);
+  $("cm-group").textContent = show(c.group);
+  $("cm-price").textContent = show(c.price, PRICE_EMPTY);
+  $("cm-note").textContent = c.priceNote || "";
+  fillList($("cm-topics"), c.topics);
+  fillList($("cm-perks"), c.perks);
+  modal.querySelector(".cmodal__head").className = "cmodal__head cmodal__head--" + id;
+  modal.showModal();
+  document.body.classList.add("no-scroll");
+}
+function closeCourse() {
+  if (modal.open) modal.close();
+}
+if (modal) {
+  modal.addEventListener("close", () => {
+    document.body.classList.remove("no-scroll");
+    if (lastFocus) lastFocus.focus();
+  });
+  document.getElementById("cm-close").addEventListener("click", closeCourse);
+  // Oyna tashqarisiga bosilsa yopiladi
+  modal.addEventListener("click", (e) => { if (e.target === modal) closeCourse(); });
+  document.getElementById("cm-enroll").addEventListener("click", (e) => {
+    e.preventDefault();
+    pickCourse(openedId);
+    lastFocus = null;
+    closeCourse();
+    document.getElementById("royxat").scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+    document.querySelector('#form input[name="name"]').focus({ preventScroll: true });
+  });
+}
+document.querySelectorAll(".course[data-id]").forEach((card) => {
+  card.addEventListener("click", (e) => {
+    if (e.target.closest("[data-enroll]")) return;
+    openCourse(card.dataset.id);
+  });
+});
 
 // ===== Telefon maskasi: 90 123 45 67 =====
 const phoneInput = document.querySelector('input[name="phone"]');

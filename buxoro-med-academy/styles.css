@@ -238,3 +238,48 @@ p { margin: 0; }
 /* Haqiqiy suratlar qo'yilganda: <img class="result__photo" ...> yoki <img class="teacher__photo" ...> */
 img.result__photo, img.teacher__photo { width: 100%; object-fit: cover; }
 .logo img { height: 44px; width: auto; }
+
+/* ===== Kurs kartochkasi: bosiladigan ===== */
+.course { cursor: pointer; }
+.course__more { align-self: flex-start; margin: -6px 0 18px; padding: 8px 14px; border-radius: 999px; border: 1.5px solid var(--red); background: #fff; color: var(--red); font: 600 14px var(--font); cursor: pointer; transition: background .2s, color .2s; }
+.course__more:hover, .course:hover .course__more { background: var(--red); color: #fff; }
+
+/* ===== Kurs haqida oyna ===== */
+body.no-scroll { overflow: hidden; }
+.cmodal { width: min(640px, calc(100% - 32px)); max-height: calc(100dvh - 48px); padding: 0; border: 0; border-radius: 28px; background: #fff; color: var(--text); overflow: auto; overscroll-behavior: contain; }
+.cmodal::backdrop { background: rgba(14, 15, 22, .6); backdrop-filter: blur(4px); }
+.cmodal[open] { animation: cm-in .22s ease-out; }
+@keyframes cm-in { from { opacity: 0; transform: translateY(16px) scale(.98); } }
+.cmodal__head { position: relative; padding: 32px 32px 26px; background: linear-gradient(135deg, #FFE1E4, #FFB8C0); }
+.cmodal__head--kimyo { background: linear-gradient(135deg, #FFE9DC, #FFC6A6); }
+.cmodal__head--majburiy { background: linear-gradient(135deg, #E7ECFF, #C3CEFF); }
+.cmodal__head--hamshiralik { background: linear-gradient(135deg, #DFF6EE, #AEE6D2); }
+.cmodal__head--rus { background: linear-gradient(135deg, #EEF0F5, #D5DAE6); }
+.cmodal__head--ingliz { background: linear-gradient(135deg, #E4F1FF, #BBDAFF); }
+.cmodal__close { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(255,255,255,.85); font-size: 18px; cursor: pointer; color: var(--text); }
+.cmodal__close:hover { background: #fff; }
+.cmodal__icon { display: block; font-family: var(--font-head); font-weight: 800; font-size: 44px; line-height: 1; margin-bottom: 14px; }
+.cmodal__cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--red-dark); }
+.cmodal__name { font-family: var(--font-head); font-size: clamp(24px, 4vw, 32px); text-transform: uppercase; margin: 4px 0 8px; }
+.cmodal__for { color: #3B3F4C; max-width: 480px; }
+.cmodal__body { padding: 26px 32px 32px; }
+.cmodal__body h3 { font-size: 17px; margin: 26px 0 10px; }
+.cmodal__facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0; }
+.cmodal__facts div { background: var(--soft); border-radius: 14px; padding: 12px 14px; }
+.cmodal__facts dt { font-size: 12px; color: var(--muted); font-weight: 600; }
+.cmodal__facts dd { margin: 2px 0 0; font-weight: 700; font-size: 16px; }
+.cmodal__list { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.cmodal__list li { position: relative; padding-left: 22px; }
+.cmodal__list li::before { content: ""; position: absolute; left: 4px; top: 9px; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+.cmodal__list--check li::before { content: "✓"; width: auto; height: auto; background: none; color: var(--red); font-weight: 700; top: 0; left: 2px; }
+.cmodal__price { margin-top: 28px; padding: 18px 20px; border-radius: 18px; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.cmodal__price small { display: block; color: var(--muted-light); font-size: 13px; }
+.cmodal__price b { font-family: var(--font-head); font-size: 22px; }
+.cmodal__price span { display: block; color: #FF8A96; font-size: 14px; margin-top: 2px; }
+@media (max-width: 640px) {
+  .cmodal { width: 100%; max-width: none; max-height: 92dvh; margin: auto 0 0; border-radius: 24px 24px 0 0; }
+  .cmodal__head { padding: 24px 20px 20px; }
+  .cmodal__body { padding: 20px 20px 28px; }
+  .cmodal__facts { grid-template-columns: repeat(2, 1fr); }
+  .cmodal__price .btn { width: 100%; }
+}
